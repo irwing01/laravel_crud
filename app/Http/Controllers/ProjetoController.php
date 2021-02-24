@@ -14,7 +14,8 @@ class ProjetoController extends Controller
      */
     public function index()
     {
-        //
+        $projetos = Projeto::latest()->paginate(5);
+        return view('Projetos.index', compact('projetos'))->with('i', (request()->input('pagina', 1) -1) * 5);        
     }
 
     /**
@@ -80,6 +81,6 @@ class ProjetoController extends Controller
      */
     public function destroy(Projeto $projeto)
     {
-        //
+        
     }
 }
